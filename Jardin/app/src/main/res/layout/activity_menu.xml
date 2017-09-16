@@ -35,11 +35,20 @@
         android:layout_margin="20dp" />
 
     <Button
+        android:id="@+id/fournitureButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fourniture"
+        android:layout_below="@+id/materielButton"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp" />
+
+    <Button
         android:id="@+id/newFicheButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="nouvelle feuille chantier"
-        android:layout_below="@+id/materielButton"
+        android:layout_below="@+id/fournitureButton"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp" />
 
