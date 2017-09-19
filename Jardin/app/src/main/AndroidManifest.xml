@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Client.PageClient"></activity>
+        <activity android:name=".Client.PageClient" />
+        <activity android:name=".Client.NewClient" />
+        <activity android:name=".Client.ClientDetail"></activity>
     </application>
 
 </manifest>

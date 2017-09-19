@@ -15,23 +15,30 @@ import java.util.List;
 public class ClientAPI {
     public static final String TABLE_CLIENT = "Client";
     public static final String COLUMN_NOM = "Nom";
-
+    public static final String COLUMN_NUM = "Num";
+    public static final String COLUMN_ADRESSE = "Adresse";
+    public static final String COLUMN_MAIL = "Mail";
+    public static final String COLUMN_FACTURES= "Factures";
 
 
 
 
     public ArrayList<ParseObject> getClients (){
-        /*ParseQuery<ParseObject > query = ParseQuery.getQuery("Client");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList );
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });*/
         ParseQuery<ParseObject > query = ParseQuery.getQuery("Client");
+        ArrayList<ParseObject> listClients = new ArrayList<ParseObject>();
+        try {
+            listClients = new ArrayList<>(query.find());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return listClients;
+    }
+
+
+
+    public ArrayList<ParseObject> getClientsByName(String nom){
+        ParseQuery<ParseObject > query = ParseQuery.getQuery("Client");
+        query.whereMatches(COLUMN_NOM,nom);
         ArrayList<ParseObject> listClients = new ArrayList<ParseObject>();
         try {
             listClients = new ArrayList<>(query.find());

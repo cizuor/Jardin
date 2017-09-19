@@ -1,14 +1,21 @@
 package com.example.pierre.jardin.Client;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ClientAPI;
+import com.parse.ParseObject;
+
+import java.util.ArrayList;
 
 public class PageClient extends AppCompatActivity {
 
@@ -18,6 +25,7 @@ public class PageClient extends AppCompatActivity {
     private RecyclerView gRecyclerViewClient;
     private RecyclerView.Adapter gAdapter;
     private RecyclerView.LayoutManager gLayoutManager;
+    private EditText geditSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +36,47 @@ public class PageClient extends AppCompatActivity {
         gRecyclerViewClient = (RecyclerView) findViewById(R.id.recyclerviewclient);
         gRecyclerViewClient.setHasFixedSize(true);
 
-        // use a linear layout manager
-        gLayoutManager = new LinearLayoutManager(this);
-        gRecyclerViewClient.setLayoutManager(gLayoutManager);
+        final ClientAPI clientAPI = new ClientAPI();
+        gSearchViewClient.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+             @Override
+             public boolean onQueryTextSubmit(String query) {
+                 Log.d("test","test "+query);
+                 affiche(clientAPI.getClientsByName(query));
+                 return false;
+             }
 
-        // specify an adapter (see also next example)
-        ClientAPI clientAPI = new ClientAPI();
-        gAdapter = new ClientAdapter(clientAPI.getClients());
-        gRecyclerViewClient.setAdapter(gAdapter);
+             @Override
+             public boolean onQueryTextChange(String newText) {
+                 return false;
+             }
+
+         });
+
+        gNouveauClient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickNewClient();
+            }
+        });
+
+        affiche(clientAPI.getClients());
 
     }
 
+
+
+    private void affiche (ArrayList<ParseObject> listClient){
+        gLayoutManager = new LinearLayoutManager(this);
+        gRecyclerViewClient.setLayoutManager(gLayoutManager);
+        gAdapter = new ClientAdapter(listClient);
+        gRecyclerViewClient.setAdapter(gAdapter);
+    }
+
+
+    private void onClickNewClient (){
+        Intent myIntent = new Intent(PageClient.this, NewClient.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        this.startActivity(myIntent);
+    }
 
 }
