@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearadapteurfacture"
+    android:layout_margin="10dp">
+    <TextView
+        android:id="@+id/nomFacture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#FF000000"
+        android:textSize="24sp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/dateFacture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#FF000000"
+        android:textSize="24sp"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/prixFacture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#FF000000"
+        android:textSize="24sp"
+        android:text="TextView" />
+
+</LinearLayout>

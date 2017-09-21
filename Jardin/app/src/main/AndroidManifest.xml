@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".Client.PageClient" />
         <activity android:name=".Client.NewClient" />
-        <activity android:name=".Client.ClientDetail"></activity>
+        <activity android:name=".Client.ClientDetail" />
+        <activity android:name=".Facture.FactureDetail"></activity>
     </application>
 
 </manifest>

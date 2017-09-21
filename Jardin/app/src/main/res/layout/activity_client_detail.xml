@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/layouthautdepage"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -47,7 +48,16 @@
             android:id="@+id/clientDetailModifier"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:text="Modifier"/>
     </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerviewfacture"
+        android:layout_below="@id/layouthautdepage">
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
