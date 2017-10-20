@@ -90,6 +90,7 @@ public class NewClient extends AppCompatActivity {
         Toast toast;
         if (e==null) {
             toast = Toast.makeText(this, "client sauvegarder", Toast.LENGTH_LONG);
+            this.finish();
         }else{
             toast = Toast.makeText(this, "Une Erreur est survenue", Toast.LENGTH_LONG);
         }

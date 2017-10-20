@@ -14,6 +14,7 @@ import com.example.pierre.jardin.Facture.FactureAdapter;
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ClientAPI;
 import com.example.pierre.jardin.api.FactureAPI;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 
 import java.util.ArrayList;
@@ -71,6 +72,44 @@ public class ClientDetail extends AppCompatActivity {
         gRecyclerViewFacture.setLayoutManager(gLayoutManager);
         gAdapter = new FactureAdapter(listFacture);
         gRecyclerViewFacture.setAdapter(gAdapter);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        try {
+            client.fetch();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        gNom.setText(client.getString(ClientAPI.COLUMN_NOM));
+        gNum.setText(Integer.toString(client.getInt(ClientAPI.COLUMN_NUM)));
+        gAdresse.setText(client.getString(ClientAPI.COLUMN_ADRESSE));
+        gMail.setText(client.getString(ClientAPI.COLUMN_MAIL));
+        gModifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickModifier();
+            }
+        });
+
+        gRecyclerViewFacture = (RecyclerView) findViewById(R.id.recyclerviewfacture);
+        gRecyclerViewFacture.setHasFixedSize(true);
+
+
+
+        FactureAPI factureAPI = new FactureAPI();
+
+        ArrayList<ParseObject> listFacture = new ArrayList<>();
+        listFacture = factureAPI.getFactureFromClient(client);
+
+        gLayoutManager = new LinearLayoutManager(this);
+        gRecyclerViewFacture.setLayoutManager(gLayoutManager);
+        gAdapter = new FactureAdapter(listFacture);
+        gRecyclerViewFacture.setAdapter(gAdapter);
+
 
     }
 

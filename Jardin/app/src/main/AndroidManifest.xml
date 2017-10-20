@@ -22,7 +22,18 @@
         <activity android:name=".Client.PageClient" />
         <activity android:name=".Client.NewClient" />
         <activity android:name=".Client.ClientDetail" />
-        <activity android:name=".Facture.FactureDetail"></activity>
+        <activity android:name=".Facture.FactureDetail" />
+        <activity android:name=".Facture.NewFacture" />
+        <activity android:name=".Chantier.ChantierDetail" />
+        <activity android:name=".Employer.EmployerDetail" />
+        <activity android:name=".Employer.PageEmployer" />
+        <activity android:name=".Employer.NewEmployer" />
+        <activity android:name=".Materiel.PageMateriel" />
+        <activity android:name=".Materiel.NewMateriel" />
+        <activity android:name=".Materiel.MaterielDetail" />
+        <activity android:name=".Fourniture.PageFourniture" />
+        <activity android:name=".Fourniture.NewFourniture" />
+        <activity android:name=".Fourniture.FournitureDetail"></activity>
     </application>
 
 </manifest>

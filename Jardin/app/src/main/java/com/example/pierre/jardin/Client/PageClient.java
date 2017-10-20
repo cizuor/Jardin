@@ -26,7 +26,7 @@ public class PageClient extends AppCompatActivity {
     private RecyclerView.Adapter gAdapter;
     private RecyclerView.LayoutManager gLayoutManager;
     private EditText geditSearch;
-
+    private final ClientAPI clientAPI = new ClientAPI();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class PageClient extends AppCompatActivity {
         gRecyclerViewClient = (RecyclerView) findViewById(R.id.recyclerviewclient);
         gRecyclerViewClient.setHasFixedSize(true);
 
-        final ClientAPI clientAPI = new ClientAPI();
+
         gSearchViewClient.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
              @Override
              public boolean onQueryTextSubmit(String query) {
@@ -62,7 +62,12 @@ public class PageClient extends AppCompatActivity {
         affiche(clientAPI.getClients());
 
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        affiche(clientAPI.getClients());
 
+    }
 
 
     private void affiche (ArrayList<ParseObject> listClient){

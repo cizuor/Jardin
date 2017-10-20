@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.pierre.jardin.Client.PageClient;
+import com.example.pierre.jardin.Employer.PageEmployer;
+import com.example.pierre.jardin.Fourniture.PageFourniture;
+import com.example.pierre.jardin.Materiel.PageMateriel;
 import com.parse.Parse;
 
 public class Menu extends AppCompatActivity {
@@ -46,19 +49,29 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-
-
-
-        /*ParseQuery<ParseObject > query = ParseQuery.getQuery("Client");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList );
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
+        gButtonEmployer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EmployerClick();
             }
-        });*/
+        });
+
+        gButtonMateriel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterielClick();
+            }
+        });
+
+
+        gButtonFourniture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FournitureClick();
+            }
+        });
+
+
     }
 
     private void ClientClick (){
@@ -67,7 +80,21 @@ public class Menu extends AppCompatActivity {
         this.startActivity(myIntent);
     }
 
+    private void EmployerClick (){
+        Intent myIntent = new Intent(Menu.this, PageEmployer.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        this.startActivity(myIntent);
+    }
 
-
+    private void MaterielClick (){
+        Intent myIntent = new Intent(Menu.this, PageMateriel.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        this.startActivity(myIntent);
+    }
+    private void FournitureClick (){
+        Intent myIntent = new Intent(Menu.this, PageFourniture.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        this.startActivity(myIntent);
+    }
 
 }

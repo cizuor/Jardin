@@ -1,4 +1,4 @@
-package com.example.pierre.jardin.Facture;
+package com.example.pierre.jardin.Materiel;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,20 +12,15 @@ import android.widget.TextView;
 import com.example.pierre.jardin.Chantier.ChantierAdapter;
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ChantierAPI;
-import com.example.pierre.jardin.api.FactureAPI;
+import com.example.pierre.jardin.api.MaterielAPI;
 import com.parse.ParseObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class FactureDetail extends AppCompatActivity {
-
+public class MaterielDetail extends AppCompatActivity {
 
     private TextView gNom;
-    private TextView gNum;
-    private TextView gPayer;
-    private TextView gPrix;
-    private TextView gDate;
 
     private Button gModifier;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
@@ -35,35 +30,17 @@ public class FactureDetail extends AppCompatActivity {
     private RecyclerView.Adapter gAdapter;
     private RecyclerView.LayoutManager gLayoutManager;
 
-    private ParseObject facture;
+    private ParseObject materiel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_facture_detail);
-        facture = (ParseObject) getIntent().getExtras().get("Facture");
+        setContentView(R.layout.activity_materiel_detail);
+        materiel = (ParseObject) getIntent().getExtras().get("Materiel");
+        gNom = (TextView) findViewById(R.id.materielDetailNom);
+        gModifier = (Button) findViewById(R.id.materielDetailModifier);
 
 
-
-        gNom = (TextView) findViewById(R.id.factureDetailNom);
-        gNum = (TextView) findViewById(R.id.factureDetailNum);
-        gPayer = (TextView) findViewById(R.id.factureDetailPayer);
-        gDate = (TextView) findViewById(R.id.factureDetailDate);
-        gPrix = (TextView) findViewById(R.id.factureDetailPrix);
-        gModifier = (Button) findViewById(R.id.factureDetailModifier);
-
-
-
-
-        gNom.setText(facture.getString(FactureAPI.COLUMN_NOM));
-        gNum.setText(Integer.toString(facture.getInt(FactureAPI.COLUMN_NUM)));
-        gDate.setText(sdf.format(facture.getDate(FactureAPI.COLUMN_DATE)));
-        gPrix.setText(Integer.toString(facture.getInt(FactureAPI.COLUMN_PRIX))+"€");
-
-        if (facture.getBoolean(FactureAPI.COLUMN_PAYER)){
-            gPayer.setText("payer");
-        }else{
-            gPayer.setText("impayer");
-        }
+        gNom.setText(materiel.getString(MaterielAPI.COLUMN_NOM));
 
         gModifier.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +54,7 @@ public class FactureDetail extends AppCompatActivity {
         gRecyclerViewChantier = (RecyclerView) findViewById(R.id.recyclerviewchantier);
         gRecyclerViewChantier.setHasFixedSize(true);
         ArrayList<ParseObject> listchantier = new ArrayList<>();
-        listchantier = chantierAPI.getChantierFromFacture(facture);
+        listchantier = chantierAPI.getChantierFromMateriel(materiel);
 
         gLayoutManager = new LinearLayoutManager(this);
         gRecyclerViewChantier.setLayoutManager(gLayoutManager);
@@ -87,10 +64,9 @@ public class FactureDetail extends AppCompatActivity {
 
 
 
-
     private void onClickModifier(){
-        /*Intent myIntent = new Intent(ClientDetail.this, NewClient.class);
-        myIntent.putExtra("Client", client ); //Optional parameters
-        this.startActivity(myIntent);*/
+        Intent myIntent = new Intent(MaterielDetail.this, NewMateriel.class);
+        myIntent.putExtra("Materiel", materiel ); //Optional parameters
+        this.startActivity(myIntent);
     }
 }

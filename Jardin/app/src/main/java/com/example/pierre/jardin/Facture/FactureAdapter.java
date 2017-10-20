@@ -1,5 +1,6 @@
 package com.example.pierre.jardin.Facture;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,9 +87,9 @@ public class FactureAdapter extends RecyclerView.Adapter<FactureAdapter.ViewHold
 
 
         private void onClickFacture(View itemView){
-            /*Intent myIntent = new Intent(itemView.getContext(),ClientDetail.class);
-            myIntent.putExtra("Client", client); //Optional parameters
-            itemView.getContext().startActivity(myIntent);*/
+            Intent myIntent = new Intent(itemView.getContext(),FactureDetail.class);
+            myIntent.putExtra("Facture", facture); //Optional parameters
+            itemView.getContext().startActivity(myIntent);
         }
 
     }

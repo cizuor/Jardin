@@ -20,7 +20,7 @@
         android:id="@+id/employerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Employer"
+        android:text="Employe"
         android:layout_below="@+id/clientButton"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp" />
@@ -38,7 +38,7 @@
         android:id="@+id/fournitureButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fourniture"
+        android:text="fournitures"
         android:layout_below="@+id/materielButton"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp" />

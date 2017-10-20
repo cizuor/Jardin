@@ -23,7 +23,9 @@
             android:id="@+id/editNomClient"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -42,7 +44,9 @@
             android:id="@+id/editNumClient"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            android:inputType="number"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,11 +60,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Adresse"/>
+
         <EditText
             android:id="@+id/editAdresseClient"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:inputType="textShortMessage"
+            android:singleLine="true" />
     </LinearLayout>
 
     <LinearLayout
@@ -73,11 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Mail"/>
+
         <EditText
             android:id="@+id/editMailClient"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:layout_weight="3"
+            android:inputType="textEmailAddress"
+            android:singleLine="true" />
     </LinearLayout>
 
     <Button
