@@ -39,4 +39,31 @@ public class FactureAPI {
         return listFact;
     }
 
+    public ArrayList<ParseObject> getFactures (){
+        ParseQuery<ParseObject > query = ParseQuery.getQuery(TABLE_FACTURE);
+        ArrayList<ParseObject> listFacture = new ArrayList<ParseObject>();
+        try {
+            listFacture = new ArrayList<>(query.find());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return listFacture;
+    }
+
+
+
+    public ArrayList<ParseObject> getFacturesByName(String nom){
+        ParseQuery<ParseObject > query = ParseQuery.getQuery(TABLE_FACTURE);
+        query.whereMatches(COLUMN_NOM,nom);
+        ArrayList<ParseObject> listFacture = new ArrayList<ParseObject>();
+        try {
+            listFacture = new ArrayList<>(query.find());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return listFacture;
+    }
+
+
+
 }

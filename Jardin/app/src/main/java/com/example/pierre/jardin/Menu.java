@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.example.pierre.jardin.Client.PageClient;
 import com.example.pierre.jardin.Employer.PageEmployer;
+import com.example.pierre.jardin.Facture.PageFacture;
 import com.example.pierre.jardin.Fourniture.PageFourniture;
 import com.example.pierre.jardin.Materiel.PageMateriel;
 import com.parse.Parse;
@@ -63,11 +64,17 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-
         gButtonFourniture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FournitureClick();
+            }
+        });
+
+        gButtonFicheChantier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FactureClick();
             }
         });
 
@@ -96,5 +103,9 @@ public class Menu extends AppCompatActivity {
         //myIntent.putExtra("key", value); //Optional parameters
         this.startActivity(myIntent);
     }
-
+    private void FactureClick (){
+        Intent myIntent = new Intent(Menu.this, PageFacture.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        this.startActivity(myIntent);
+    }
 }

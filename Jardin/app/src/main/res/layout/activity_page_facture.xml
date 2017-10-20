@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pierre.jardin.Fourniture.PageFourniture">
+    tools:context="com.example.pierre.jardin.Facture.PageFacture">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,14 +17,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/newFournitureButton"
-            android:text="Nouvelle fourniture "
+            android:id="@+id/newFactureButton"
+            android:text="Nouvelle facture "
             android:textSize="20dp"
             android:textAlignment="center" />
         <SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/SearchFourniture"/>
+            android:id="@+id/SearchFacture"/>
 
     </LinearLayout>
 
@@ -38,20 +39,29 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textColor="#FF000000"
+            android:textSize="20sp"
             android:text="Nom" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textColor="#FF000000"
+            android:textSize="20sp"
+            android:text="Date" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FF000000"
+            android:textSize="20sp"
             android:text="Prix" />
-
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerviewFourniture"
+        android:id="@+id/recyclerviewFacture"
         android:layout_below="@id/titrerecycleur">
     </android.support.v7.widget.RecyclerView>
 

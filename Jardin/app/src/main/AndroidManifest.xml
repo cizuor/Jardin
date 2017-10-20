@@ -33,7 +33,8 @@
         <activity android:name=".Materiel.MaterielDetail" />
         <activity android:name=".Fourniture.PageFourniture" />
         <activity android:name=".Fourniture.NewFourniture" />
-        <activity android:name=".Fourniture.FournitureDetail"></activity>
+        <activity android:name=".Fourniture.FournitureDetail" />
+        <activity android:name=".Facture.PageFacture"></activity>
     </application>
 
 </manifest>
