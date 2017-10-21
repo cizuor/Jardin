@@ -1,5 +1,6 @@
 package com.example.pierre.jardin.Client;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,9 +23,13 @@ import java.util.ArrayList;
 public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder> {
 
     private ArrayList<ParseObject> listClients;
+    private Boolean facture;
+    private Activity myActivity;
 
-    public ClientAdapter(ArrayList<ParseObject> listClients) {
+    public ClientAdapter(ArrayList<ParseObject> listClients,Boolean facture,Activity myActivity ) {
         this.listClients=listClients;
+        this.facture=facture;
+        this.myActivity=myActivity;
     }
 
     @Override
@@ -77,9 +82,16 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ViewHolder
 
 
         private void onClickClient(View itemView){
-            Intent myIntent = new Intent(itemView.getContext(),ClientDetail.class);
-            myIntent.putExtra("Client", client); //Optional parameters
-            itemView.getContext().startActivity(myIntent);
+            if (!facture) {
+                Intent myIntent = new Intent(itemView.getContext(), ClientDetail.class);
+                myIntent.putExtra("Client", client); //Optional parameters
+                itemView.getContext().startActivity(myIntent);
+            }else{
+                Intent intent=new Intent();
+                intent.putExtra("MESSAGE",client);
+                myActivity.setResult(2,intent);
+                myActivity.finish();
+            }
         }
 
     }

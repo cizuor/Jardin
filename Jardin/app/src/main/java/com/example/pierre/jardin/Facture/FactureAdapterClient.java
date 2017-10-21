@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pierre.jardin.R;
-import com.example.pierre.jardin.api.ClientAPI;
 import com.example.pierre.jardin.api.FactureAPI;
 import com.parse.ParseObject;
 
@@ -20,20 +19,20 @@ import java.util.ArrayList;
  * Created by pierre on 21/09/2017.
  */
 
-public class FactureAdapter extends RecyclerView.Adapter<FactureAdapter.ViewHolder> {
+public class FactureAdapterClient extends RecyclerView.Adapter<FactureAdapterClient.ViewHolder> {
 
 
 
     private ArrayList<ParseObject> listFacture;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
-    public FactureAdapter(ArrayList<ParseObject> listFacture) {
+    public FactureAdapterClient(ArrayList<ParseObject> listFacture) {
         this.listFacture=listFacture;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.adapter_facture, parent, false);
+        View view = inflater.inflate(R.layout.adapter_facture_client, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,13 +51,11 @@ public class FactureAdapter extends RecyclerView.Adapter<FactureAdapter.ViewHold
         private TextView nom;
         private TextView date;
         private TextView prix;
-        private TextView client;
         private LinearLayout lignefacture;
         private ParseObject facture;
         public ViewHolder(final View itemView) {
             super(itemView);
             nom = (TextView) itemView.findViewById(R.id.nomFacture);
-            client = (TextView) itemView.findViewById(R.id.clientFacture);
             date = (TextView) itemView.findViewById(R.id.dateFacture);
             prix = (TextView) itemView.findViewById(R.id.prixFacture);
             lignefacture = (LinearLayout) itemView.findViewById(R.id.linearadapteurfacture);
@@ -82,7 +79,6 @@ public class FactureAdapter extends RecyclerView.Adapter<FactureAdapter.ViewHold
             }
             this.facture = facture;
             nom.setText(facture.getString(FactureAPI.COLUMN_NOM));
-            client.setText(facture.getParseObject(FactureAPI.COLUMN_CLIENT).getString(ClientAPI.COLUMN_NOM));
             try{
                 date.setText(sdf.format(facture.getDate(FactureAPI.COLUMN_DATE)));
             }catch (NullPointerException e){

@@ -5,12 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.pierre.jardin.Facture.FactureAdapter;
+import com.example.pierre.jardin.Facture.FactureAdapterClient;
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ClientAPI;
 import com.example.pierre.jardin.api.FactureAPI;
@@ -70,7 +69,7 @@ public class ClientDetail extends AppCompatActivity {
 
         gLayoutManager = new LinearLayoutManager(this);
         gRecyclerViewFacture.setLayoutManager(gLayoutManager);
-        gAdapter = new FactureAdapter(listFacture);
+        gAdapter = new FactureAdapterClient(listFacture);
         gRecyclerViewFacture.setAdapter(gAdapter);
 
     }
@@ -107,7 +106,7 @@ public class ClientDetail extends AppCompatActivity {
 
         gLayoutManager = new LinearLayoutManager(this);
         gRecyclerViewFacture.setLayoutManager(gLayoutManager);
-        gAdapter = new FactureAdapter(listFacture);
+        gAdapter = new FactureAdapterClient(listFacture);
         gRecyclerViewFacture.setAdapter(gAdapter);
 
 

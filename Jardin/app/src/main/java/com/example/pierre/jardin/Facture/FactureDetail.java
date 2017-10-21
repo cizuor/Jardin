@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.pierre.jardin.Chantier.ChantierAdapter;
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ChantierAPI;
+import com.example.pierre.jardin.api.ClientAPI;
 import com.example.pierre.jardin.api.FactureAPI;
 import com.parse.ParseObject;
 
@@ -26,6 +27,7 @@ public class FactureDetail extends AppCompatActivity {
     private TextView gPayer;
     private TextView gPrix;
     private TextView gDate;
+    private TextView gClient;
 
     private Button gModifier;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
@@ -49,6 +51,7 @@ public class FactureDetail extends AppCompatActivity {
         gPayer = (TextView) findViewById(R.id.factureDetailPayer);
         gDate = (TextView) findViewById(R.id.factureDetailDate);
         gPrix = (TextView) findViewById(R.id.factureDetailPrix);
+        gClient = (TextView) findViewById(R.id.factureDetailClient);
         gModifier = (Button) findViewById(R.id.factureDetailModifier);
 
 
@@ -56,7 +59,12 @@ public class FactureDetail extends AppCompatActivity {
 
         gNom.setText(facture.getString(FactureAPI.COLUMN_NOM));
         gNum.setText(Integer.toString(facture.getInt(FactureAPI.COLUMN_NUM)));
-        gDate.setText(sdf.format(facture.getDate(FactureAPI.COLUMN_DATE)));
+        gClient.setText(facture.getParseObject(FactureAPI.COLUMN_CLIENT).getString(ClientAPI.COLUMN_NOM));
+        try {
+            gDate.setText(sdf.format(facture.getDate(FactureAPI.COLUMN_DATE)));
+        }catch (NullPointerException e){
+
+        }
         gPrix.setText(Integer.toString(facture.getInt(FactureAPI.COLUMN_PRIX))+"€");
 
         if (facture.getBoolean(FactureAPI.COLUMN_PAYER)){
@@ -89,8 +97,8 @@ public class FactureDetail extends AppCompatActivity {
 
 
     private void onClickModifier(){
-        /*Intent myIntent = new Intent(ClientDetail.this, NewClient.class);
-        myIntent.putExtra("Client", client ); //Optional parameters
-        this.startActivity(myIntent);*/
+        Intent myIntent = new Intent(FactureDetail.this, NewFacture.class);
+        myIntent.putExtra("Facture", facture ); //Optional parameters
+        this.startActivity(myIntent);
     }
 }

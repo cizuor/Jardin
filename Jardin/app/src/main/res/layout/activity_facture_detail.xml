@@ -93,7 +93,27 @@
                 android:layout_weight="1"/>
 
         </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#FF000000"
+            android:layout_weight="1"
+            android:text="Client : "
+            />
+        <TextView
+            android:id="@+id/factureDetailClient"
+            android:textSize="20sp"
+            android:textColor="#FF000000"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
 
+        </LinearLayout>
         <Button
             android:id="@+id/factureDetailModifier"
             android:layout_width="wrap_content"

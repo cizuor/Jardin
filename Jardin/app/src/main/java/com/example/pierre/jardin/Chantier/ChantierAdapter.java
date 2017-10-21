@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.pierre.jardin.Facture.FactureAdapter;
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ChantierAPI;
 import com.parse.ParseObject;

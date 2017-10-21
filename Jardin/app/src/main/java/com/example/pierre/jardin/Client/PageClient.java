@@ -13,6 +13,7 @@ import android.widget.SearchView;
 
 import com.example.pierre.jardin.R;
 import com.example.pierre.jardin.api.ClientAPI;
+import com.example.pierre.jardin.api.FactureAPI;
 import com.parse.ParseObject;
 
 import java.util.ArrayList;
@@ -26,11 +27,21 @@ public class PageClient extends AppCompatActivity {
     private RecyclerView.Adapter gAdapter;
     private RecyclerView.LayoutManager gLayoutManager;
     private EditText geditSearch;
+    private Boolean fromFacture;
     private final ClientAPI clientAPI = new ClientAPI();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_client);
+        try {
+            fromFacture =(Boolean) getIntent().getExtras().get("Facture");
+        }catch (NullPointerException e){
+            fromFacture = false;
+        }
+
+
+        Log.d("test","test facture = "+fromFacture);
+
         gNouveauClient = (Button) findViewById(R.id.newClientButton);
         gSearchViewClient = (android.widget.SearchView) findViewById(R.id.SearchClient);
         gRecyclerViewClient = (RecyclerView) findViewById(R.id.recyclerviewclient);
@@ -73,7 +84,7 @@ public class PageClient extends AppCompatActivity {
     private void affiche (ArrayList<ParseObject> listClient){
         gLayoutManager = new LinearLayoutManager(this);
         gRecyclerViewClient.setLayoutManager(gLayoutManager);
-        gAdapter = new ClientAdapter(listClient);
+        gAdapter = new ClientAdapter(listClient,fromFacture,this);
         gRecyclerViewClient.setAdapter(gAdapter);
     }
 
